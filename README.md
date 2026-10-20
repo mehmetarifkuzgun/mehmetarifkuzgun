@@ -10,17 +10,19 @@
 
 ## 🧠 About me
 
-I build **generative AI and agentic systems** and ship them to production on **Microsoft Azure**.
-Over the past two years I've worked at **Microsoft** and **Nephos Systems**, where I delivered agents now used by **1,000+ end users** across 5 enterprise clients, from architecture and evaluation to Kubernetes deployment and CI/CD.
+I'm an AI engineer focused on **generative AI and agentic systems**, with production experience on **Microsoft Azure**. I build and ship agents (RAG, function/tool calling, MCP) for enterprise clients, including permission-aware RAG over enterprise knowledge sources.
 
-Before that, I did deep learning research for clinical NLP in a TÜBİTAK-funded project at Bahçeşehir University, where I earned my B.Sc. in Artificial Intelligence Engineering (full merit scholarship).
+I also have a strong **classical ML and data science** foundation (LightGBM, XGBoost, scikit-learn, PyTorch) and a clinical NLP research background from a TÜBİTAK-funded project at Bahçeşehir University, where I earned my B.Sc. in Artificial Intelligence Engineering (full merit scholarship).
+
+I work across the stack: agent orchestration, evaluation, cloud infrastructure, and CI/CD.
 
 ## 🔭 What I work on
 
 - 🤖 **Multi-agent workflows** with function/tool calling and **Model Context Protocol (MCP)**
-- 🔍 **RAG systems**: hybrid search, reranking, and permission-aware retrieval (RBAC, document-level authorization)
-- 📊 **LLM evaluation & tracing**: raised RAG groundedness from ~77% to ~92% on a predefined evaluation set
+- 🔍 **RAG systems**: hybrid search, reranking, and permission-aware retrieval
+- 📊 **LLM evaluation & tracing** for RAG and agent pipelines
 - 🎯 **Fine-tuning** open-source LLMs with LoRA / QLoRA
+- 🧪 **Classical ML & data science**: LightGBM, XGBoost, scikit-learn, PyTorch
 - ☁️ **Cloud & DevOps**: Docker, Kubernetes (AKS), GitHub Actions
 - 🎙️ **Voice agents** with speech-to-text / text-to-speech
 
@@ -47,37 +49,41 @@ Before that, I did deep learning research for clinical NLP in a TÜBİTAK-funded
 
 ## 🚀 Featured projects
 
-Each repo has a README with an architecture diagram, tests, CI, and an honest "known limitations" section. Most can be run **without an API key** through an offline demo mode.
+Each repo has an architecture diagram, tests, CI, and an honest "known limitations" section. Most can be run **without an API key** through an offline demo mode.
+
+### 🎬 [TikTok Trend Analysis → Brand Ad Pipeline](https://github.com/mehmetarifkuzgun/tiktok-trends-to-brand-ad-pipeline)
+Turns live TikTok trends into on-brand ad concepts for a (fictional) specialty cafe. The pipeline discovers trends, judges which ones fit the brand, and writes the ad script.
+`Python`
 
 ### 🤖 [Browser Agent: ReAct + LangGraph + Playwright](https://github.com/mehmetarifkuzgun/Browser-Agent-with-ReAct-LangGraph)
-A small, readable browser-automation agent. Give it a task in natural language; an LLM reasons step by step (Think → Act → Observe), drives a real Chromium through Playwright tools, verifies the outcome, and reports `PASSED` / `FAILED` with a full trace. The loop runs both as a plain Python loop and as a **LangGraph `StateGraph`**.
-`Python` · `LangGraph` · `Playwright` · `Gemini` · 19 tests · CI · MIT
+A small, readable browser-automation agent. Give it a task in natural language; an LLM reasons step by step (Think → Act → Observe), drives a real Chromium through Playwright, verifies the outcome, and reports `PASSED` / `FAILED` with a full trace. Runs as a plain Python loop and as a **LangGraph `StateGraph`**.
+`Python` · `LangGraph` · `Playwright` · `Gemini`
+
+### 🔎 [Semantic Search with PostgreSQL + pgvector](https://github.com/mehmetarifkuzgun/AI-Powered-Semantic-Search-Engine-PostgreSQL)
+Documents are embedded, stored in **PostgreSQL with an HNSW-indexed `vector` column**, and queried by cosine similarity through a **FastAPI** REST API + web page and a **Streamlit** app.
+`Python` · `PostgreSQL` · `pgvector` · `FastAPI` · `Streamlit` · `Docker`
+
+### 💬 [Flu Akademi Course Assistant: Agentic RAG chatbot](https://github.com/mehmetarifkuzgun/flu-akademi-chatbot)
+A Turkish-language chatbot that answers questions about a lecture using a transcript and a book chapter. A Gemini-based agent first decides *which source to search* (or none), retrieves passages from a Chroma vector store, and streams a grounded answer to a web chat over WebSocket.
+`Python` · `Gemini` · `ChromaDB` · `FastAPI (WebSocket)` · `Render`
 
 ### 🧩 [Multi-Agent System: LangChain, Ollama & RAG](https://github.com/mehmetarifkuzgun/langchain-multi-agent-demo)
 Five cooperating agents (RAG, Research, Writer, Critic, Coordinator) built on LangChain LCEL. A FAISS vector store grounds answers in your documents, and a critic → writer **revision loop** improves the article until it clears a quality threshold. Runs on a local Ollama model, with a Streamlit UI.
-`Python` · `LangChain (LCEL)` · `FAISS` · `Ollama` · `Streamlit` · 19 tests · CI
-
-### 🔎 [Semantic Search with PostgreSQL + pgvector](https://github.com/mehmetarifkuzgun/AI-Powered-Semantic-Search-Engine-PostgreSQL)
-Documents are embedded (sentence-transformers, OpenAI, or an offline test backend), stored in **PostgreSQL with an HNSW-indexed `vector` column**, and queried by cosine similarity through a **FastAPI** REST API + web page and a **Streamlit** app.
-`Python` · `PostgreSQL` · `pgvector` · `FastAPI` · `Streamlit` · `Docker` · 22 tests · CI against a pgvector service container
-
-### 💬 [Flu Akademi Course Assistant: Agentic RAG chatbot](https://github.com/mehmetarifkuzgun/flu-akademi-chatbot)
-A Turkish-language chatbot that answers questions about a lecture using two sources, a transcript and a book chapter. A Gemini-based agent first decides *which source to search* (or none), retrieves passages from a Chroma vector store, and streams a grounded answer to a web chat over WebSocket.
-`Python` · `Gemini` · `ChromaDB` · `FastAPI (WebSocket)` · `Render` · 26 tests · CI
+`Python` · `LangChain (LCEL)` · `FAISS` · `Ollama` · `Streamlit`
 
 ### 📈 [CustomerIQ: Segmentation, Churn & CLV dashboard](https://github.com/mehmetarifkuzgun/customeriq)
-A Streamlit app that turns e-commerce transaction data into **RFM segments**, a **churn-risk model** (Random Forest + XGBoost, with leakage-free temporal labels) and **customer lifetime value** estimates (BG/NBD + Gamma-Gamma blended with an ML regressor). Ships with a synthetic data generator.
-`Python` · `scikit-learn` · `XGBoost` · `lifetimes` · `Streamlit` · `SQLite` · `Docker` · 12 tests · CI
+A Streamlit app that turns e-commerce transaction data into **RFM segments**, a **churn-risk model** (Random Forest + XGBoost, leakage-free temporal labels) and **customer lifetime value** estimates. Ships with a synthetic data generator.
+`Python` · `scikit-learn` · `XGBoost` · `Streamlit` · `Docker`
 
 ### 🔒 Other work (private repositories)
-- **Blockchain Insight**: platform combining on-chain data, an LLM fine-tuned with LoRA (PEFT) for crypto-market sentiment on 10,000+ Reddit posts and news articles, and ML-based fraud/anomaly detection, deployed on Azure with a React/Next.js dashboard
-- **Breast Cancer Metastasis Detection**: ResNet/VGG-style CNNs combining classification and segmentation on histopathology images (~90% accuracy on a self-built dataset)
+- **Blockchain Insight**: platform combining on-chain data, an LLM fine-tuned with LoRA (PEFT) for crypto-market sentiment, and ML-based fraud/anomaly detection, deployed on Azure with a React/Next.js dashboard
+- **Breast Cancer Metastasis Detection**: ResNet/VGG-style CNNs combining classification and segmentation on histopathology images
 
 ## 💼 Experience highlights
 
-- **AI & Cloud Engineer @ Nephos Systems** (2025–2026): production GenAI agents on Azure AI Foundry + AKS, MCP integrations, permission-aware RAG, LLM evaluation pipelines, GitHub Copilot rollout to 100+ developers
-- **Cloud & AI Specialist @ Microsoft** (2024–2025): 15+ agent and RAG proof-of-concepts with LangGraph and Azure AI Foundry, live demos to partners and 500+ attendees at Microsoft AI Tour
-- **ML Researcher @ TÜBİTAK-funded project** (2023–2024): NLP pipeline extracting structured data from 1,000+ pathology reports at ~90% field-extraction accuracy
+- **AI & Cloud Engineer @ Nephos Systems** (2025–2026): production GenAI agents on Azure AI Foundry + AKS, MCP integrations, permission-aware RAG, LLM evaluation pipelines, GitHub Copilot rollout across engineering teams
+- **Cloud & AI Specialist @ Microsoft** (2024–2025): agent and RAG proof-of-concepts with LangGraph and Azure AI Foundry, live demos to partners and attendees at Microsoft AI Tour
+- **ML Researcher @ TÜBİTAK-funded project** (2023–2024): NLP pipeline extracting structured data from clinical pathology reports
 
 ## 🏅 Certifications
 
